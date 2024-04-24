@@ -45,7 +45,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .nav__item {
@@ -345,118 +345,93 @@ body {
 	background-repeat: no-repeat;
 }
 
-/* diseño de la parte izquierda */
+/* diseño de la parte arriba */
 .contacto__left-container {
 	display: flex;
 	justify-content: top;
-
 	flex-direction: column;
 
-	margin-top: 20px;
-	min-height: 20vh;
-	z-index: 2;
+	margin: 120px 0 50px 0;
 }
 
 .contacto__left-titulo {
 	font-weight: 500;
-	font-size: 40px;
+	font-size: 30px;
 	color: var(--color-letra);
 	text-align: center;
 }
 
-.contacto__left-redes {
-	margin-top: 20px;
-	user-select: none;
-}
-
-.contacto__left-redes a {
-	margin: 0 10px;
-}
-
-.contacto__left-redes a img {
-	width: 35px;
-	border-radius: 0;
-	transition: width 0.1s;
-}
-
-.contacto__left-redes a img:active {
-	width: 33px;
-}
-
-/* diseño de formulario */
-.contacto__right-form {
+/* diseño de la parte abajo */
+.contacto__right-container {
 	display: flex;
 	justify-content: top;
-	align-content: start;
+	align-items: start;
 	flex-direction: column;
 
-	margin: 0;
-	z-index: 2;
-}
+	margin-top: 20px;
 
-/*- input y textarea -*/
-.contacto__right-form input {
-	align-self: center;
-	min-width: 50vw;
-	height: 5vh;
-	margin: 10px 0;
-	padding: 0 5px;
-	font-size: 11px;
-	border: 1px solid rgb(184, 182, 182);
+	text-align: left;
 	color: white;
-	background: none;
-	outline: none;
-	font-family: "Montserrat";
-
-	transition: border-color 0.2s, background-color 0.2s;
 }
 
-/*- textarea -*/
-.contacto__right-msj {
-	align-self: center;
-	min-height: 7vh;
-	min-width: 80vw;
-	padding: 10px 10px;
-	margin: 10px;
-	background: none;
-	color: #fff;
-	border: 1px solid rgb(184, 182, 182);
-	font-size: 12px;
-	font-family: "Montserrat";
-	resize: none;
-	background: none;
-	outline: none;
-
-	transition: border-color 0.2s, background-color 0.2s;
-}
-
-/* input & textarea focus */
-.contacto__right-form input:focus,
-.contacto__right-form .contacto__right-msj:focus {
-	border-color: var(--color-letra);
-	background-color: #fff1;
-}
-
-/*- boton -*/
-input[type="submit"] {
-	background: var(--color-letra3);
-	cursor: pointer;
-	border: none;
-	width: 53vw;
+/* titulos */
+.contacto__right-container h5 {
+	font-size: 18px;
+	font-weight: 500;
 	margin-bottom: 10px;
-	border-radius: 10px;
-
-	outline: 0;
-	outline-offset: 0;
-	transition: background-color 0.2s, border-radius 0.2s, outline 0.3s,
-		outline-offset 0.3s;
 }
 
-input[type="submit"]:active {
-	background-color: var(--color-letra2);
-	border-radius: 20px;
-	outline: 2px #c48a87 solid;
-	outline-offset: -7px;
+/* diseño direcciones */
+.contacto__direcciones {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	margin-bottom: 30px;
+}
+
+.contacto__direcciones p {
+	font-size: 15px;
+	font-weight: 300;
+	color: rgb(194, 193, 193);
+}
+
+/* diseño redes */
+.contacto__redes {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	margin-bottom: 30px;
+}
+
+.contacto__redes a {
+	font-size: 15px;
+	font-weight: 400;
+	color: #f09491;
+	text-decoration: none;
+	transition: color 0.1s;
+}
+
+.contacto__redes a:last-of-type {
+	margin-top: 10px;
+}
+
+.contacto__redes a:active {
+	color: #a66765;
+}
+
+/* diseño correo */
+.contacto__correo {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.contacto__correo p {
+	font-size: 15px;
+	font-weight: 300;
+	color: rgb(194, 193, 193);
 }
 
 /*--------- DISEÑO DE SECCION 6 (FOOTER) ---------*/
@@ -490,8 +465,8 @@ input[type="submit"]:active {
 }
 
 /*----------- MEDIA QUERIES tablets para arriba-----------*/
-@media (min-width: 688px) {
-	.choc-blanco {
+@media (min-width: 688px) and (max-width: 1377px) {
+	.nutella {
 		display: none;
 	}
 }
@@ -504,25 +479,6 @@ input[type="submit"]:active {
 		padding: 0;
 		box-sizing: border-box;
 	}
-
-	/*----- NAVBAR -----*/
-	/* .nav__ul {
-		margin-left: 50px;
-		font-size: 15px;
-	}
-
-	.nav__ul-container {
-		flex-grow: 2;
-	}
-
-	.nav__logo-container {
-		flex-grow: 1;
-	}
-
-	.nav__logo {
-		width: 80px;
-		padding: 10px 0;
-	} */
 
 	/*----- HOME -----*/
 	.home {
@@ -605,7 +561,7 @@ input[type="submit"]:active {
 }
 /*----------- MEDIA QUERIES notebooks-----------*/
 
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media (min-width: 1025px) {
 	/*----- NAVBAR -----*/
 	.nav__ul {
 		margin-left: 50px;
@@ -613,7 +569,8 @@ input[type="submit"]:active {
 	}
 
 	.nav__logo {
-		width: 80px;
+		width: 70px;
+		padding: 0.5vh;
 		margin-left: 30px;
 	}
 
@@ -627,5 +584,168 @@ input[type="submit"]:active {
 		width: 100%;
 		padding: 1vh 3vh;
 		font-size: 18px;
+	}
+
+	/*----- ABOUT US -----*/
+	.about__us {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* diseño de la izquierda */
+	.about__us-left {
+		align-items: center;
+		max-width: 40%;
+		margin: auto;
+	}
+
+	.about__us-title-left {
+		margin-top: 100px;
+		font-size: 25px;
+		font-weight: 400;
+	}
+
+	.about__us-img {
+		margin: 100px 0 30px 100px;
+		width: 350px;
+	}
+
+	/* diseño de la derecha */
+	.about__us-right {
+		max-width: 40%;
+		margin-top: 115px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.about__us-title-right {
+		text-align: center;
+	}
+
+	.about__us-title-right,
+	.about__us-original {
+		font-size: 35px;
+	}
+
+	.about__us-paragraph {
+		margin-top: 130px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	/* MEDIALUNAS */
+	.medialunas__container-identidad {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+
+		min-height: 30vh;
+	}
+
+	.medialunas__title-down {
+		margin: 0px 40px;
+
+		font-size: 35px;
+		font-weight: 400;
+	}
+
+	.medialunas__descrip {
+		max-width: 300px;
+		text-align: center;
+		margin: 10px 0 30px 0;
+	}
+
+	.medialunas__descrip p {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	/* CONTACTO */
+	/* diseño de la parte arriba */
+
+	.contacto__left-titulo {
+		font-size: 40px;
+	}
+
+	/* diseño de la parte abajo */
+	.contacto__right-container {
+		flex-direction: row;
+	}
+
+	/* titulos */
+	.contacto__right-container h5 {
+		font-size: 20px;
+	}
+
+	/* diseño direcciones */
+
+	.contacto__direcciones p {
+		font-size: 17px;
+	}
+
+	.contacto__direcciones p:last-of-type {
+		margin-top: 10px;
+	}
+
+	/* diseño redes */
+	.contacto__redes {
+		margin: 0 50px 0 50px;
+	}
+
+	.contacto__redes a {
+		font-size: 17px;
+	}
+
+	/* diseño correo */
+
+	.contacto__correo p {
+		font-size: 17px;
+	}
+}
+
+/*----------- MEDIA QUERIES notebooks-----------*/
+@media (min-width: 1201px) {
+	/* NAVBAR */
+	.nav__ul-container {
+		flex-grow: 4;
+	}
+
+	.nav__logo-container {
+		flex-grow: 1;
+	}
+
+	/* HOME */
+	.home {
+		background-size: 60%;
+	}
+
+	/* MEDIALUNAS */
+	.medialunas {
+		min-height: 80vh;
+	}
+	/* titulo */
+	.medialunas__title-top {
+		margin-bottom: 30px;
+	}
+	/* imagenes */
+	.medialunas__container-img {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 90vw;
+		min-height: 30vh;
+	}
+
+	.medialunas__descrip {
+		max-width: 500px;
+	}
+
+	.medialunas__descrip p {
+		font-size: 18px;
+		text-align: left;
+		margin-left: 30px;
 	}
 }
