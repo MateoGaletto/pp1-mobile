@@ -464,13 +464,6 @@ body {
 	font-size: 10px;
 }
 
-/*----------- MEDIA QUERIES tablets para arriba-----------*/
-@media (min-width: 688px) and (max-width: 1377px) {
-	.nutella {
-		display: none;
-	}
-}
-
 /*----------- MEDIA QUERIES 820px-----------*/
 @media (min-width: 820px) and (max-width: 1024px) {
 	/* ---------diseños generales--------- */
@@ -728,6 +721,7 @@ body {
 	}
 	/* titulo */
 	.medialunas__title-top {
+		margin-left: 150px;
 		margin-bottom: 30px;
 	}
 	/* imagenes */
@@ -747,5 +741,10 @@ body {
 		font-size: 18px;
 		text-align: left;
 		margin-left: 30px;
+	}
+
+	.otros__container-img h2 {
+		margin-left: 150px;
+		margin-bottom: 30px;
 	}
 }
