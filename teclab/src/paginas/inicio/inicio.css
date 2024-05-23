@@ -1,0 +1,825 @@
+/* ---------diseños generales--------- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--color-fondo: #f6f6f6;
+	--color-letra: #fdf0ea;
+	--color-letra2: #3c3c3b;
+	--color-letra3: #f09491;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-image: var(--color-fondo);
+	font-family: "Montserrat", sans-serif;
+	position: relative;
+	min-height: 100vh;
+	padding-bottom: 10vh;
+}
+
+.container {
+	max-width: 100%;
+}
+
+/*--------- DISEÑO DE SECCION EXTRA (NAV) ---------*/
+
+.nav {
+	background-color: var(--color-letra3);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.nav__ul {
+	padding: 2px 0px;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+
+	font-size: 13.5px;
+	align-items: center;
+}
+
+.nav__item {
+	margin-left: 5px;
+	list-style: none;
+}
+
+.nav__item:last-of-type .nav__link {
+	color: #000;
+	background-color: #fff;
+	border-radius: 20px;
+	padding: 2px 25px;
+	margin-right: 15px;
+}
+
+.nav__item:last-of-type .nav__link:hover {
+	background-color: #9e44446e;
+	color: #fff;
+	border-radius: 20px;
+	outline: 2px solid var(--color-letra3);
+	outline-offset: -4px;
+}
+
+.nav__ul-container,
+.nav__logo-container {
+	text-align: center;
+}
+
+.nav__link {
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	padding: 8px 10px;
+	margin: 2px;
+	border-radius: 0;
+	outline: 0;
+	outline-offset: 0;
+
+	transition: border-radius 0.1s, background-color 0.1s, outline 0.1s,
+		outline-offset 0.1s, color 0.1s;
+}
+
+.nav__link:active {
+	background-color: #f0a7a76e;
+	border-radius: 20px;
+	outline: 2px solid var(--color-letra3);
+	outline-offset: -4px;
+}
+
+.nav__logo {
+	display: none;
+	width: 50px;
+	padding: 0 10px;
+}
+
+.w-6 {
+	display: flex;
+
+	text-align: center;
+	margin-left: 10px;
+}
+
+.croissant {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	margin-left: 26px;
+}
+
+.contact {
+	margin-left: 23px;
+}
+
+/*--------- DISEÑO DE SECCION 1 (HOME) ---------*/
+
+.home {
+	width: 100%;
+	min-height: 90vh;
+	position: relative;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	flex-direction: column;
+
+	background-image: url(../../img/logo/logo-sin-fondo.png);
+	background-position: center;
+	background-size: 90%;
+	background-repeat: no-repeat;
+}
+
+.home__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 20px;
+	margin-bottom: 30px;
+}
+
+/* diseño parrafo */
+.home__container-parrafo {
+	font-size: 12px;
+}
+
+/* diseño boton */
+.home__container a {
+	width: 100px;
+	background-color: var(--color-letra3);
+	color: var(--color-letra);
+	padding: 1vh;
+	border-radius: 50px;
+	text-decoration: none;
+	/* box-shadow: 0 0 10px #0006; */
+	border-bottom: 4px solid #bc7370;
+	font-size: 12px;
+	text-align: center;
+
+	transition: background-color 0.2s, border-bottom 0.2s;
+}
+
+.home__container a:active {
+	background-color: #f09491bb;
+	border-bottom: 1px solid #bc7370;
+}
+
+/*--------- DISEÑO DE SECCION 2 (ABOUT-US) ---------*/
+
+.about__us {
+	width: 100%;
+	min-height: 90vh;
+	position: relative;
+	background-color: #e4e4e4;
+}
+
+/* diseño de arriba */
+.about__us-left {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.about__us-title-left {
+	align-self: left;
+	margin-top: 40px;
+	margin-left: 20px;
+
+	font-size: 20px;
+	font-weight: 400;
+	letter-spacing: 2px;
+}
+
+.about__us-img {
+	margin-top: 20px;
+	align-self: center;
+	width: 250px;
+}
+
+/* diseño de abajo */
+.about__us-right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	max-width: 300px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.about__us-title-right {
+	font-size: 25px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.about__us-original {
+	color: var(--color-letra3);
+	font-weight: 600;
+	font-size: 28px;
+}
+
+.about__us-paragraph {
+	text-align: center;
+	font-size: 18px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+/*--------- DISEÑO DE SECCION 3 (MEDIALUNAS) ---------*/
+
+.medialunas {
+	width: 100%;
+	min-height: 130vh;
+	position: relative;
+	background-color: var(--color-fondo);
+}
+
+.medialunas__container-facturas {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+/* diseño de titulo */
+.medialunas__title-top {
+	align-self: left;
+	margin-top: 40px;
+	margin-left: 20px;
+
+	font-size: 20px;
+	font-weight: 400;
+}
+
+/* diseño de imagenes */
+.medialunas__container-img {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 90vw;
+	min-height: 80vh;
+	align-self: center;
+}
+
+.medialunas__img {
+	display: flex;
+	max-width: 290px;
+	margin: 10px;
+	padding: 0;
+}
+
+/* diseño de parte de abajo */
+.medialunas__container-identidad {
+	display: flex;
+	justify-content: top;
+	align-items: center;
+	flex-direction: column;
+
+	min-height: 30vh;
+}
+
+.medialunas__title-down {
+	margin-top: 30px;
+
+	font-size: 35px;
+	font-weight: 400;
+}
+
+.medialunas__descrip {
+	max-width: 300px;
+	text-align: center;
+	margin: 10px 0 30px 0;
+}
+
+.medialunas__descrip p {
+	font-size: 18px;
+	text-align: center;
+}
+
+/*--------- DISEÑO DE SECCION 4 (OTROS) ---------*/
+
+.otros {
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	background-color: #e4e4e4;
+}
+
+/* diseño de titulo */
+
+.otros__container-img {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.otros h2 {
+	align-self: left;
+	margin: 40px 0 0 20px;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+/* dieño de imagenes */
+.otros__img {
+	max-width: 90vw;
+	min-height: 80vh;
+	align-self: center;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: start;
+	flex-direction: row;
+}
+
+.otros__img-basis {
+	max-width: 300px;
+	margin: 25px 10px;
+	padding: 0;
+}
+
+.otros__img-basis img {
+	max-width: 300px;
+}
+
+.otros__img-basis h3 {
+	margin: 10px 0 10px 0;
+	font-weight: 600;
+}
+
+.otros__img-basis p {
+	margin-bottom: 50px;
+}
+
+.otros__img-basis p,
+.otros__img-basis h3 {
+	text-align: left;
+}
+
+/*--------- DISEÑO DE SECCION 5 (CONTACTO) ---------*/
+
+.contacto {
+	width: 100%;
+	min-height: 80vh;
+	position: relative;
+	display: flex;
+	justify-content: top;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.61);
+
+	background-image: url(../../img/logo/fondoContacto.png);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+/* diseño de la parte arriba */
+.contacto__left-container {
+	display: flex;
+	justify-content: top;
+	flex-direction: column;
+
+	margin: 120px 0 50px 0;
+}
+
+.contacto__left-titulo {
+	font-weight: 500;
+	font-size: 30px;
+	color: var(--color-letra);
+	text-align: center;
+}
+
+/* diseño de la parte abajo */
+.contacto__right-container {
+	display: flex;
+	justify-content: top;
+	align-items: start;
+	flex-direction: column;
+
+	margin-top: 20px;
+
+	text-align: left;
+	color: white;
+}
+
+/* titulos */
+.contacto__right-container h5 {
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+/* diseño direcciones */
+.contacto__direcciones {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	margin-bottom: 30px;
+}
+
+.contacto__direcciones p {
+	font-size: 15px;
+	font-weight: 300;
+	color: rgb(194, 193, 193);
+}
+
+/* diseño redes */
+.contacto__redes {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	margin-bottom: 30px;
+}
+
+.contacto__redes a {
+	font-size: 15px;
+	font-weight: 400;
+	color: #f09491;
+	text-decoration: none;
+	transition: color 0.1s;
+}
+
+.contacto__redes a:last-of-type {
+	margin-top: 10px;
+}
+
+.contacto__redes a:active {
+	color: #a66765;
+}
+
+/* diseño correo */
+.contacto__correo {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.contacto__correo p {
+	font-size: 15px;
+	font-weight: 300;
+	color: rgb(194, 193, 193);
+}
+
+/*--------- DISEÑO DE SECCION 6 (FOOTER) ---------*/
+
+.footer {
+	position: absolute;
+	width: 100%;
+	height: 10vh;
+	bottom: 0;
+
+	background: rgb(155, 120, 126);
+	color: #ffffff88;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* diseño de titulo */
+.footer__container-titulo {
+	font-size: 12px;
+}
+
+.footer__container-derechos {
+	margin-top: 0;
+	font-size: 10px;
+}
+
+/*----------- MEDIA QUERIES general-----------*/
+@media (min-width: 620px) {
+	.nav__logo {
+		display: inline;
+		width: 100px;
+		padding: 5px 20px;
+	}
+
+	.h-6:not(.shop) {
+		display: none;
+	}
+
+	.nav__item:last-of-type .nav__link {
+		padding: 4px 40px;
+	}
+
+	.shop {
+		margin-left: 10px;
+	}
+}
+/*----------- MEDIA QUERIES 820px-----------*/
+
+@media (min-width: 820px) and (max-width: 1024px) {
+	/* ---------diseños generales--------- */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	/*----- HOME -----*/
+	.home {
+		background-size: 60%;
+	}
+
+	.home__container-parrafo {
+		min-width: 200px;
+		font-size: 15px;
+	}
+
+	.home__container a {
+		width: 100%;
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	/*----- ABOUT US -----*/
+	.about__us {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* diseño de la izquierda */
+	.about__us-left {
+		align-items: center;
+		max-width: 40%;
+		margin: auto;
+	}
+
+	.about__us-title-left {
+		margin-top: 100px;
+		font-size: 25px;
+		font-weight: 400;
+	}
+
+	.about__us-img {
+		margin: 100px 0 30px 100px;
+		width: 350px;
+	}
+
+	/* diseño de la derecha */
+	.about__us-right {
+		max-width: 40%;
+		margin-top: 115px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.about__us-title-right {
+		text-align: center;
+	}
+
+	.about__us-title-right,
+	.about__us-original {
+		font-size: 35px;
+	}
+
+	.about__us-paragraph {
+		margin-top: 130px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	/*---- MEDIALUNAS -----*/
+	.medialunas__title-top {
+		margin: 100px 0 20px 85px;
+		font-size: 25px;
+		font-weight: 400;
+	}
+
+	/*---- OTROS -----*/
+	.otros__title {
+		margin: 100px 0 20px 85px;
+		font-size: 25px;
+		font-weight: 400;
+	}
+}
+/*----------- MEDIA QUERIES notebooks-----------*/
+
+@media (min-width: 1025px) {
+	/*----- NAVBAR -----*/
+	.nav__ul {
+		margin-left: 50px;
+		font-size: 15px;
+	}
+
+	.nav__logo {
+		width: 70px;
+		padding: 0.5vh;
+		margin-left: 30px;
+	}
+
+	/*----- HOME -----*/
+	.home__container-parrafo {
+		min-width: 200px;
+		font-size: 15px;
+	}
+
+	.home__container a {
+		width: 100%;
+		padding: 1vh 3vh;
+		font-size: 18px;
+	}
+
+	/*----- ABOUT US -----*/
+	.about__us {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* diseño de la izquierda */
+	.about__us-left {
+		align-items: center;
+		max-width: 40%;
+		margin: auto;
+	}
+
+	.about__us-title-left {
+		margin-top: 100px;
+		margin-left: -30%;
+		font-size: 30px;
+		font-weight: 400;
+	}
+
+	.about__us-img {
+		margin: 100px 0 30px 100px;
+		width: 350px;
+	}
+
+	/* diseño de la derecha */
+	.about__us-right {
+		max-width: 40%;
+		margin-top: 115px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.about__us-title-right {
+		text-align: center;
+	}
+
+	.about__us-title-right,
+	.about__us-original {
+		font-size: 35px;
+	}
+
+	.about__us-paragraph {
+		margin-top: 130px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+	/* MEDIALUNAS */
+	.medialunas__title-top {
+		font-size: 30px;
+	}
+
+	.medialunas__container-identidad {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+
+		min-height: 30vh;
+	}
+
+	.medialunas__title-down {
+		margin: 0px 40px;
+
+		font-size: 35px;
+		font-weight: 400;
+	}
+
+	.medialunas__descrip {
+		max-width: 300px;
+		text-align: center;
+		margin: 10px 0 30px 0;
+	}
+
+	.medialunas__descrip p {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	/* OTROS */
+	.otros h2 {
+		font-size: 30px;
+	}
+
+	/* CONTACTO */
+	/* diseño de la parte arriba */
+
+	.contacto__left-titulo {
+		font-size: 40px;
+	}
+
+	/* diseño de la parte abajo */
+	.contacto__right-container {
+		flex-direction: row;
+
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	/* titulos */
+	.contacto__right-container h5 {
+		font-size: 25px;
+	}
+
+	/* diseño direcciones */
+
+	.contacto__direcciones p {
+		font-size: 20px;
+	}
+
+	.contacto__direcciones p:last-of-type {
+		margin-top: 10px;
+	}
+
+	/* diseño redes */
+	.contacto__redes {
+		margin: 0 50px 0 50px;
+	}
+
+	.contacto__redes a {
+		font-size: 20px;
+	}
+
+	/* diseño correo */
+
+	.contacto__correo p {
+		font-size: 20px;
+	}
+}
+
+/*----------- MEDIA QUERIES notebooks-----------*/
+@media (min-width: 1201px) {
+	/* NAVBAR */
+	.nav__ul-container {
+		flex-grow: 4;
+	}
+
+	.nav__logo-container {
+		flex-grow: 1;
+	}
+
+	/* HOME */
+	.home {
+		background-size: 60%;
+	}
+
+	/* MEDIALUNAS */
+	.medialunas {
+		min-height: 80vh;
+	}
+	/* titulo */
+	.medialunas__title-top {
+		margin-left: 150px;
+		margin-bottom: 30px;
+	}
+	/* imagenes */
+	.medialunas__container-img {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 90vw;
+		min-height: 30vh;
+	}
+
+	.medialunas__descrip {
+		max-width: 500px;
+	}
+
+	.medialunas__descrip p {
+		font-size: 18px;
+		text-align: left;
+		margin-left: 30px;
+	}
+
+	.otros__container-img h2 {
+		margin-left: 150px;
+		margin-bottom: 30px;
+	}
+}
