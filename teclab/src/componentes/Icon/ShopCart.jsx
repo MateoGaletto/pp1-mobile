@@ -3,8 +3,8 @@ const ShopCart = () => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width={35}
-			height={35}
+			width={40}
+			height={40}
 			viewBox="0 0 512 512"
 			className="icon-cart"
 		>

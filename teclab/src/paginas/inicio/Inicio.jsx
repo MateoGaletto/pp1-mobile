@@ -1,22 +1,20 @@
 import React from "react";
-import HeaderInicio from "../../componentes/Header.jsx";
-import imagenes from "../../componentes/imagenes.js";
+import { Link } from "react-router-dom";
+import imagenes from "../../componentes/js/imagenes.js";
 
-const Inicio = () => {
+export const Inicio = () => {
 	return (
 		<>
 			{/* <!-- contenedor --> */}
 
 			<main className="container">
-				{/* HEADER */}
-				<HeaderInicio />
 				{/* <!-- Primera Seccion(HOME) --> */}
 				<section className="home" id="home">
 					<div className="home__container">
 						<p className="home__container-parrafo">PASTELERÍA Y MÁS</p>
-						<a className="home__container-btn" href="#conocenos">
-							CONOCENOS
-						</a>
+						<Link className="home__container-btn" to="/comprar">
+							SHOP
+						</Link>
 					</div>
 				</section>
 				{/* <!-- Segunda Seccion(ABOUT US) --> */}
@@ -31,16 +29,24 @@ const Inicio = () => {
 							<span className="about__us-original">ORIGINAL</span>
 						</h2>
 						<p className="about__us-paragraph">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-							ratione maiores eos unde culpa dolor deserunt nihil architecto
-							placeat at laudantium earum ipsa qui corporis iure repellat,
-							harum, officiis libero.
+							Desde que comenzamos con el rubro en 2017, nuestra pastelería ha
+							sido un sueño hecho realidad. Nuestro producto estrella, las
+							medialunas rellenas, son el resultado de años de perfeccionamiento
+							y amor por la repostería. Su masa suave y esponjosa,
+							cuidadosamente elaborada, se combina con rellenos exquisitos que
+							van desde el clásico dulce de leche hasta innovadoras fusiones de
+							sabores. Cada bocado es una experiencia única que deja una sonrisa
+							en el rostro de quienes las prueban.
 							<br />
 							<br />
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-							eius soluta, ullam molestias esse incidunt at harum delectus,
-							enim, sint inventore. Commodi veniam, nostrum aliquid ea expedita
-							cupiditate cumque placeat?
+							Detrás de cada medialuna hay horas de trabajo arduo y dedicación.
+							Desde la selección de los ingredientes más frescos hasta el
+							delicado proceso de horneado, cuidamos cada detalle para
+							asegurarnos de que cada producto que sale de nuestra cocina sea
+							simplemente perfecto. Pero nuestra pasión va más allá de las
+							medialunas. Tambien contamos con otras delicias tentadoras, desde
+							chipas recién horneados hasta pastafrolas y postres decorados con
+							esmero.
 						</p>
 					</div>
 				</section>
@@ -51,7 +57,7 @@ const Inicio = () => {
 						<div className="medialunas__container-img">
 							<img
 								className="medialunas__img"
-								src={imagenes.img7}
+								src={imagenes.img5}
 								loading="lazy"
 							/>
 							<img
@@ -93,30 +99,39 @@ const Inicio = () => {
 								<img src={imagenes.img12} loading="lazy" />
 								<h3>Scones</h3>
 								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Quasi, qui aut quia vitae dicta asperiores doloremque!
-									Doloribus, eveniet deserunt iure obcaecati magni fugiat
-									expedita nihil iste quis voluptatibus vitae? Nihil.
+									Deliciosamente dorado y con un aroma tentador, este scone de
+									queso es una obra maestra de la repostería. Su exterior
+									crujiente esconde un interior suave y esponjoso, impregnado
+									con el rico sabor del queso derretido. El equilibrio entre lo
+									salado del queso y lo sutilmente dulce de la masa hace que
+									cada bocado sea una delicia para el paladar.
 								</p>
 							</div>
 							<div className="otros__img-basis porciones">
 								<img src={imagenes.img11} loading="lazy" />
 								<h3>Postres</h3>
 								<p>
-									Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-									Recusandae, ut id deleniti quam illum odio sit, similique,
-									incidunt placeat eius repudiandae fuga aperiam ipsum vel nihil
-									ad reiciendis perspiciatis explicabo.
+									Las porciones de postre suelen tener una textura esponjosa y
+									suave, pero pueden variar dependiendo del tipo de postre.
+									Algunos pueden ser más húmedos y densos, mientras que otros
+									son más ligeros y aireados. Por ejemplo la porción de Red
+									Velvet tiene una textura suave y delicada, similar a un
+									bizcochuelo esponjoso. La porción de Carrot Cake tiene una
+									textura más densa debido a los trozos de zanahoria y nueces.
+									Tambien tenemos postre como Doble Oreo, Matilda, Mousse de
+									Chocolate, entre otras.
 								</p>
 							</div>
 							<div className="otros__img-basis cañoncitos">
 								<img src={imagenes.img10} loading="lazy" />
 								<h3>Cañoncitos</h3>
 								<p>
-									Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-									Recusandae, ut id deleniti quam illum odio sit, similique,
-									incidunt placeat eius repudiandae fuga aperiam ipsum vel nihil
-									ad reiciendis perspiciatis explicabo.
+									Los cañoncitos son pequeños rollos de masa horneada, cuyo
+									interior es suave y esponjoso, y puede estar relleno con dulce
+									de leche ó pastelera.
+									<br />
+									Los cañoncitos de dulce de leche y de pastelera son dos
+									delicias de la repostería con encanto propio.
 								</p>
 							</div>
 						</div>
@@ -151,10 +166,7 @@ const Inicio = () => {
 						</div>
 					</div>
 				</section>
-				{/* FOOTER */}
 			</main>
 		</>
 	);
 };
-
-export default Inicio;

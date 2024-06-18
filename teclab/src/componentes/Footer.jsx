@@ -1,7 +1,7 @@
 import React from "react";
 import ScrollToTop from "react-scroll-to-top";
 
-const Footer = () => {
+export const Footer = () => {
 	return (
 		<footer className="footer">
 			<h4 className="footer__container-titulo">Valentina Galetto Pastelería</h4>
@@ -24,5 +24,3 @@ const Footer = () => {
 		</footer>
 	);
 };
-
-export default Footer;

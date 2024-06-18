@@ -39,12 +39,14 @@ body {
 	position: sticky;
 	top: 0;
 	z-index: 10;
+	height: 6vh;
 }
 
 .nav__ul {
 	padding: 2px 0px;
 	margin: 0;
 	display: flex;
+	justify-content: space-around;
 	flex-wrap: wrap;
 
 	font-size: 13.5px;
@@ -56,34 +58,20 @@ body {
 	list-style: none;
 }
 
-.nav__item:last-of-type .nav__link {
-	color: #000;
-	background-color: #fff;
-	border-radius: 20px;
-	padding: 2px 25px;
-	margin-right: 15px;
-}
-
-.nav__item:last-of-type .nav__link:hover {
-	background-color: #9e44446e;
-	color: #fff;
-	border-radius: 20px;
-	outline: 2px solid var(--color-letra3);
-	outline-offset: -4px;
-}
-
-.nav__ul-container,
-.nav__logo-container {
+.nav__ul-container {
 	text-align: center;
+	position: absolute;
+	left: 10px;
 }
 
 .nav__link {
-	color: #fff;
+	color: #000;
+	background-color: #fff;
 	text-decoration: none;
 	display: inline-block;
 	padding: 8px 10px;
 	margin: 2px;
-	border-radius: 0;
+	border-radius: 20px;
 	outline: 0;
 	outline-offset: 0;
 
@@ -91,36 +79,13 @@ body {
 		outline-offset 0.1s, color 0.1s;
 }
 
-.nav__link:active {
-	background-color: #f0a7a76e;
+.nav__link:active,
+.nav__link:hover {
+	background-color: #9e44446e;
+	color: #fff;
 	border-radius: 20px;
 	outline: 2px solid var(--color-letra3);
 	outline-offset: -4px;
-}
-
-.nav__logo {
-	display: none;
-	width: 50px;
-	padding: 0 10px;
-}
-
-.w-6 {
-	display: flex;
-
-	text-align: center;
-	margin-left: 10px;
-}
-
-.croissant {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	margin-left: 26px;
-}
-
-.contact {
-	margin-left: 23px;
 }
 
 /*--------- DISEÑO DE SECCION 1 (HOME) ---------*/
@@ -516,10 +481,6 @@ body {
 		display: none;
 	}
 
-	.nav__item:last-of-type .nav__link {
-		padding: 4px 40px;
-	}
-
 	.shop {
 		margin-left: 10px;
 	}
@@ -620,12 +581,6 @@ body {
 	.nav__ul {
 		margin-left: 50px;
 		font-size: 15px;
-	}
-
-	.nav__logo {
-		width: 70px;
-		padding: 0.5vh;
-		margin-left: 30px;
 	}
 
 	/*----- HOME -----*/
@@ -777,12 +732,8 @@ body {
 /*----------- MEDIA QUERIES notebooks-----------*/
 @media (min-width: 1201px) {
 	/* NAVBAR */
-	.nav__ul-container {
-		flex-grow: 4;
-	}
-
-	.nav__logo-container {
-		flex-grow: 1;
+	.nav__link {
+		padding: 4px 30px;
 	}
 
 	/* HOME */

@@ -1,24 +1,43 @@
-import React from "react";
-import Footer from "./componentes/Footer.jsx";
-import { Routes, Route } from "react-router-dom";
-import Inicio from "./paginas/inicio/Inicio.jsx";
-import Comprar from "./paginas/shop/Comprar.jsx";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const App = () => {
+import { Header } from "./componentes/Header.jsx";
+import { Inicio } from "./paginas/inicio/Inicio.jsx";
+import { Footer } from "./componentes/Footer.jsx";
+import { ListaProds } from "./componentes/ListaProds.jsx";
+
+export const App = () => {
+	const [allProducts, setAllProducts] = useState([]);
+	const [total, setTotal] = useState(0);
+	const [countProducts, setCountProducts] = useState(0);
+
 	return (
-		<>
-			<div className="contenedor">
-				<div className="contenido">
-					<Routes>
-						<Route path="/" element={<Inicio />} />
-						<Route path="/comprar" element={<Comprar />} />
-					</Routes>
-				</div>
-
-				<Footer />
-			</div>
-		</>
+		<Router>
+			<Header
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+			/>
+			<Routes>
+				<Route path="/" element={<Inicio />} />
+				<Route
+					path="/comprar"
+					element={
+						<ListaProds
+							allProducts={allProducts}
+							setAllProducts={setAllProducts}
+							total={total}
+							setTotal={setTotal}
+							countProducts={countProducts}
+							setCountProducts={setCountProducts}
+						/>
+					}
+				/>
+			</Routes>
+			<Footer />
+		</Router>
 	);
 };
-
-export default App;
