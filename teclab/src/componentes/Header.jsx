@@ -12,15 +12,15 @@ export const Header = ({
 }) => {
 	const [active, setActive] = useState(false);
 
-	const onDeleteProduct = (product) => {
-		const results = allProducts.filter((item) => item.id !== product.id);
+	const eliminarProducto = (product) => {
+		const eliminar = allProducts.filter((item) => item.id !== product.id);
 
 		setTotal(total - product.precio * product.cantidad);
 		setCountProducts(countProducts - product.cantidad);
-		setAllProducts(results);
+		setAllProducts(eliminar);
 	};
 
-	const onCleanCart = () => {
+	const vaciarCarrito = () => {
 		confirm("¿Está seguro que desea eliminar todos sus productos del carrito?");
 
 		setAllProducts([]);
@@ -78,7 +78,7 @@ export const Header = ({
 											strokeWidth="1.5"
 											stroke="currentColor"
 											className="icon-close"
-											onClick={() => onDeleteProduct(product)}
+											onClick={() => eliminarProducto(product)}
 										>
 											<path
 												strokeLinecap="round"
@@ -94,7 +94,7 @@ export const Header = ({
 								<span className="total-pagar">${total}</span>
 							</div>
 
-							<button className="btn-clear" onClick={onCleanCart}>
+							<button className="btn-clear" onClick={vaciarCarrito}>
 								Vaciar Carrito
 							</button>
 						</>
