@@ -1,1 +1,0 @@
-llamar al carrito para asi llamar a los productos por medio de (...) y despues insertarlos mediante un push()
