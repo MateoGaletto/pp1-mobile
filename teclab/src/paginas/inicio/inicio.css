@@ -18,7 +18,7 @@ html {
 
 body {
 	background-image: var(--color-fondo);
-	font-family: "Montserrat", sans-serif;
+	font-family: Montserrat, sans-serif;
 	position: relative;
 	min-height: 100vh;
 	padding-bottom: 10vh;
@@ -578,9 +578,13 @@ body {
 
 @media (min-width: 1025px) {
 	/*----- NAVBAR -----*/
+	.nav {
+		height: 8vh;
+	}
+
 	.nav__ul {
 		margin-left: 50px;
-		font-size: 15px;
+		font-size: 18px;
 	}
 
 	/*----- HOME -----*/
