@@ -79,7 +79,6 @@
 .precio-producto-carrito {
 	font-weight: 700;
 	font-size: 20px;
-	margin-left: 10px;
 }
 
 .cantidad-producto-carrito {
@@ -187,12 +186,14 @@
 /* name */
 .name-product {
 	font-size: 20px;
+	margin-left: 10px;
 }
 
 /* price */
 .price {
 	font-size: 20px;
 	font-weight: 500;
+	margin-left: 10px;
 }
 
 /* contador de items */
