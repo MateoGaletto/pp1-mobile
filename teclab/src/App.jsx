@@ -5,6 +5,7 @@ import { Header } from "./componentes/Header.jsx";
 import { Inicio } from "./paginas/inicio/Inicio.jsx";
 import { Footer } from "./componentes/Footer.jsx";
 import { ListaProds } from "./componentes/ListaProds.jsx";
+import { Contacto } from "./componentes/Contacto.jsx";
 
 export const App = () => {
 	const [allProducts, setAllProducts] = useState([]);
@@ -23,6 +24,7 @@ export const App = () => {
 			/>
 			<Routes>
 				<Route path="/" element={<Inicio />} />
+				<Route path="/contacto" element={<Contacto />}></Route>
 				<Route
 					path="/comprar"
 					element={

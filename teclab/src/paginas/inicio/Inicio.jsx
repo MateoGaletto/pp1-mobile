@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imagenes from "../../componentes/js/imagenes.js";
+import { Contacto } from "../../componentes/Contacto.jsx";
 
 export const Inicio = () => {
 	return (
@@ -26,7 +27,7 @@ export const Inicio = () => {
 					<div className="about__us-right">
 						<h2 className="about__us-title-right">
 							Somos una pastelería
-							<span className="about__us-original">ORIGINAL</span>
+							<span className="about__us-original"> ORIGINAL</span>
 						</h2>
 						<p className="about__us-paragraph">
 							Desde que comenzamos con el rubro en 2017, nuestra pastelería ha
@@ -134,35 +135,6 @@ export const Inicio = () => {
 									delicias de la repostería con encanto propio.
 								</p>
 							</div>
-						</div>
-					</div>
-				</section>
-				{/* <!-- Quinta Seccion(CONTACTO) --> */}
-				<section className="contacto" id="contacto">
-					<div className="contacto__left-container">
-						<h2 className="contacto__left-titulo">ENCONTRANOS</h2>
-					</div>
-					<div className="contacto__right-container">
-						<div className="contacto__direcciones">
-							<h5>Direcciones</h5>
-							<p>San Luis, San Martin 1265</p>
-							<p>Villa Mercedes, Belgrano 663</p>
-						</div>
-						<div className="contacto__redes">
-							<h5>Redes</h5>
-							<a href="https://www.instagram.com/valentinaage_/" target="blank">
-								Instagram
-							</a>
-							<a
-								href="https://www.facebook.com/valentinagalettoe"
-								target="blank"
-							>
-								Facebook
-							</a>
-						</div>
-						<div className="contacto__correo">
-							<h5>Correo</h5>
-							<p>valegaletto_@hotmail.com</p>
 						</div>
 					</div>
 				</section>

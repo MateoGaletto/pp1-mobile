@@ -20,6 +20,26 @@ import docenaComun from "../../img/facturas/docenaComun.jpg";
 import cañoncitos from "../../img/otros/cañoncitos.png";
 import postres from "../../img/otros/porciones.jpg";
 import scones from "../../img/otros/scones.jpg";
+import alfNegro from "../../img/otros/alfNegro.jpg";
+import alfBlanco from "../../img/otros/alfBlanco.jpg";
+import alfMaicena from "../../img/otros/alfMaicena.jpg";
+import bizcochos from "../../img/otros/bizcochos.jpg";
+import chipa from "../../img/otros/chipa.jpg";
+// import budMza from "../../img/otros/alfBlanco.jpg"
+// import budLimon from "../../img/otros/alfBlanco.jpg"
+// import budChoc from "../../img/otros/alfBlanco.jpg"
+// import coco from "../../img/otros/alfBlanco.jpg"
+// import pastafrola from "../../img/otros/alfBlanco.jpg"
+
+// postres
+import carrot from "../../img/postres/carrot.jpg";
+import frutosRojos from "../../img/postres/frutosrojos.jpg";
+import maracuya from "../../img/postres/maracuya.jpg";
+import redVelvet from "../../img/postres/redvelvet.jpg";
+import patagonia from "../../img/postres/patagonia.jpg";
+import matilda from "../../img/postres/matilda.jpg";
+import mousse from "../../img/postres/mousse.jpg";
+import dobleOreo from "../../img/postres/dobleoreo.jpg";
 
 //-------------------------------------------
 
@@ -47,4 +67,21 @@ export default {
 	img13: docena,
 	img14: mediaDocena,
 	img15: docenaComun,
+
+	// otrosShop
+	img16: alfNegro,
+	img17: alfBlanco,
+	img18: alfMaicena,
+	img19: bizcochos,
+	img20: chipa,
+
+	// postres
+	img21: carrot,
+	img22: frutosRojos,
+	img23: maracuya,
+	img24: redVelvet,
+	img25: patagonia,
+	img26: matilda,
+	img27: mousse,
+	img28: dobleOreo,
 };
