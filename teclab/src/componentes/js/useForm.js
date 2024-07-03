@@ -21,5 +21,5 @@ export const useForm = (initialData, onValidate) => {
 		}
 	};
 
-	return { form, errors, loading, handleChange, handleSubmit };
+	return { form, errors, handleChange, handleSubmit };
 };
