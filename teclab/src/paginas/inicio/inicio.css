@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Montserrat;
+	src: url(../../fonts/Montserrat-Light.ttf);
+}
+
 /* ---------diseños generales--------- */
 * {
 	margin: 0;
@@ -7,6 +12,8 @@
 
 :root {
 	--color-fondo: #f6f6f6;
+	--color-fondo2: #ededed;
+	--color-fondo3: #e4e4e4;
 	--color-letra: #fdf0ea;
 	--color-letra2: #3c3c3b;
 	--color-letra3: #f09491;
@@ -20,6 +27,7 @@ html {
 body {
 	background-image: var(--color-fondo);
 	font-family: Montserrat, sans-serif;
+	font-weight: 600;
 	position: relative;
 	min-height: 100vh;
 	padding-bottom: 10vh;
@@ -147,7 +155,7 @@ body {
 	width: 100%;
 	min-height: 90vh;
 	position: relative;
-	background-color: #ededed;
+	background-color: var(--color-fondo2);
 }
 
 /* diseño de arriba */
@@ -281,7 +289,7 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	position: relative;
-	background-color: #ededed;
+	background-color: var(--color-fondo2);
 }
 
 /* diseño de titulo */
@@ -483,6 +491,16 @@ input[type="number"]::-webkit-outer-spin-button {
 	margin: 0;
 }
 
+input::placeholder {
+	color: transparent;
+}
+
+input:focus::placeholder {
+	font-size: 12px;
+	color: #fff6;
+	transition: 0.2s all;
+}
+
 /* mensaje de error */
 /* general */
 .warning {
@@ -581,6 +599,7 @@ input[type="number"]::-webkit-outer-spin-button {
 	/*----- HOME -----*/
 	.home {
 		background-size: 60%;
+		/* min-height: 80vh; */
 	}
 
 	.home__container-parrafo {
@@ -662,6 +681,11 @@ input[type="number"]::-webkit-outer-spin-button {
 	.login-box {
 		width: 400px;
 	}
+
+	.warning {
+		left: 0px;
+		width: 320px;
+	}
 }
 /*----------- MEDIA QUERIES notebooks-----------*/
 
@@ -677,6 +701,10 @@ input[type="number"]::-webkit-outer-spin-button {
 	}
 
 	/*----- HOME -----*/
+	.home {
+		min-height: 85vh;
+	}
+
 	.home__container-parrafo {
 		min-width: 200px;
 		font-size: 15px;
@@ -692,6 +720,7 @@ input[type="number"]::-webkit-outer-spin-button {
 	.about__us {
 		display: flex;
 		flex-direction: row;
+		background-color: var(--color-fondo3);
 	}
 
 	/* diseño de la izquierda */
@@ -771,6 +800,10 @@ input[type="number"]::-webkit-outer-spin-button {
 	}
 
 	/* OTROS */
+	.otros {
+		background-color: var(--color-fondo3);
+	}
+
 	.otros h2 {
 		font-size: 30px;
 	}
@@ -780,29 +813,20 @@ input[type="number"]::-webkit-outer-spin-button {
 		width: 500px;
 	}
 
-	/* diseño direcciones */
-
-	.contacto__direcciones p {
-		font-size: 20px;
+	/* mensaje de error */
+	.warning {
+		left: 0px;
+		width: 420px;
 	}
 
-	.contacto__direcciones p:last-of-type {
-		margin-top: 10px;
+	.warning__icon {
+		margin: 3px auto 0 0;
 	}
 
-	/* diseño redes */
-	.contacto__redes {
-		margin: 0 50px 0 50px;
-	}
-
-	.contacto__redes a {
-		font-size: 20px;
-	}
-
-	/* diseño correo */
-
-	.contacto__correo p {
-		font-size: 20px;
+	.warning__title {
+		font-size: 14px;
+		margin-top: -3px;
+		margin-left: -60px;
 	}
 }
 
@@ -855,5 +879,20 @@ input[type="number"]::-webkit-outer-spin-button {
 
 	.login-box {
 		width: 530px;
+	}
+
+	/* mensaje de error */
+	.warning {
+		left: 0px;
+		width: 450px;
+	}
+
+	.warning__icon {
+		margin: 3px auto 0 0;
+	}
+
+	.warning__title {
+		font-size: 14px;
+		margin-left: -70px;
 	}
 }

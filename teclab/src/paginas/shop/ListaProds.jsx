@@ -1,6 +1,6 @@
-import React from "react";
-import { productos } from "./js/productos";
-import { Typed } from "./Typed";
+import React, { useState } from "react";
+import { productos } from "../../componentes/js/productos";
+import { Typed } from "../../componentes/Typed";
 
 export const ListaProds = ({
 	allProducts,
@@ -18,6 +18,7 @@ export const ListaProds = ({
 
 			setTotal(total + product.precio * product.cantidad);
 			setCountProducts(countProducts + product.cantidad);
+
 			return setAllProducts([...products]);
 		}
 
@@ -29,6 +30,7 @@ export const ListaProds = ({
 	return (
 		<div id="shopContent" className="container__flex">
 			<Typed />
+
 			<div className="container-prods">
 				{productos.map((product) => (
 					<div className="flex-item" key={product.id}>

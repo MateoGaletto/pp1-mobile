@@ -1,4 +1,4 @@
-import React, { act, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ShopCart from "./Icon/ShopCart.jsx";
 
@@ -21,13 +21,16 @@ export const Header = ({
 	};
 
 	const vaciarCarrito = () => {
-		confirm("¿Está seguro que desea eliminar todos sus productos del carrito?");
+		const vaciar = confirm(
+			"¿Está seguro que desea eliminar todos sus productos del carrito?"
+		);
 
-		setAllProducts([]);
-		setTotal(0);
-		setCountProducts(0);
+		if (vaciar) {
+			setAllProducts([]);
+			setTotal(0);
+			setCountProducts(0);
+		}
 	};
-
 	return (
 		<>
 			<nav className="nav">
@@ -98,7 +101,6 @@ export const Header = ({
 								<h3>Total:</h3>
 								<span className="total-pagar">${total}</span>
 							</div>
-
 							<button className="btn-clear" onClick={vaciarCarrito}>
 								Vaciar Carrito
 							</button>

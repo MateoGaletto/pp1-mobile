@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./componentes/Header.jsx";
 import { Inicio } from "./paginas/inicio/Inicio.jsx";
 import { Footer } from "./componentes/Footer.jsx";
-import { ListaProds } from "./componentes/ListaProds.jsx";
-import { Contacto } from "./componentes/Contacto.jsx";
+import { ListaProds } from "./paginas/shop/ListaProds.jsx";
+import { Contacto } from "./paginas/contacto/Contacto.jsx";
+import { Carrito } from "./componentes/Carrito.jsx";
 
 export const App = () => {
 	const [allProducts, setAllProducts] = useState([]);
@@ -38,6 +39,7 @@ export const App = () => {
 						/>
 					}
 				/>
+				<Route path="/carrito" element={<Carrito />}></Route>
 			</Routes>
 			<Footer />
 		</Router>

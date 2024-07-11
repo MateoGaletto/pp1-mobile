@@ -25,11 +25,6 @@ import alfBlanco from "../../img/otros/alfBlanco.jpg";
 import alfMaicena from "../../img/otros/alfMaicena.jpg";
 import bizcochos from "../../img/otros/bizcochos.jpg";
 import chipa from "../../img/otros/chipa.jpg";
-// import budMza from "../../img/otros/alfBlanco.jpg"
-// import budLimon from "../../img/otros/alfBlanco.jpg"
-// import budChoc from "../../img/otros/alfBlanco.jpg"
-// import coco from "../../img/otros/alfBlanco.jpg"
-// import pastafrola from "../../img/otros/alfBlanco.jpg"
 
 // postres
 import carrot from "../../img/postres/carrot.jpg";

@@ -1,64 +1,59 @@
-import React from "react";
-import { useForm } from "./js/useForm";
-import { Error } from "./Icon/Error";
+import React, { useRef, useState } from "react";
+import { useForm } from "../../componentes/js/useForm";
+import { validacion } from "../../componentes/js/validaciones";
+import { Error } from "../../componentes/Icon/Error";
+import emailjs from "@emailjs/browser";
 
 export const Contacto = () => {
-	const initialData = {
+	const [error, setError] = useState({});
+	const [enviar, setEnviar] = useState(false);
+
+	const dataInicial = {
 		nombre: "",
 		correo: "",
 		telefono: "",
 		mensaje: "",
 	};
 
-	const onValidate = (form) => {
-		let isError = false;
-		let errors = {};
-		let regexNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-		let regexCorreo = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-		let regexMensaje = /^.{1,255}$/;
+	const refForm = useRef();
 
-		if (!form.nombre.trim()) {
-			errors.nombre = 'El campo "Nombre" no debe ser vacio.';
-			isError = true;
-		} else if (!regexNombre.test(form.nombre)) {
-			errors.nombre = 'El campo "Nombre" solo acepta letras y espacios.';
-			isError = true;
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const err = validacion(form);
+		setError(err);
+
+		const serviceId = "service_8qn6jd1";
+		const templateId = "template_iohm6cg";
+		const apiKey = "zAm1ngOoaPDMlk760";
+
+		if (Object.keys(err).length === 0) {
+			setEnviar(true);
+			emailjs
+				.sendForm(serviceId, templateId, refForm.current, apiKey)
+				.then((data) => {
+					console.log(data);
+					data.success === "true" && setForm(dataInicial);
+					setEnviar(false);
+				})
+				.catch((error) => {
+					console.log(error);
+					setEnviar(false);
+				});
 		}
-
-		if (!form.correo.trim()) {
-			errors.correo = 'El campo "Correo" no debe ser vacio.';
-			isError = true;
-		} else if (!regexCorreo.test(form.correo)) {
-			errors.nombre = 'El campo "Correo" Contiene un formato no valido.';
-			isError = true;
-		}
-
-		if (!form.telefono.trim()) {
-			errors.telefono = 'El campo "Telefono" no debe ser vacio.';
-			isError = true;
-		}
-
-		if (!form.mensaje.trim()) {
-			errors.mensaje = 'El campo "Mensaje" no debe ser vacio.';
-			isError = true;
-		} else if (!regexMensaje.test(form.mensaje)) {
-			errors.nombre = 'El campo "Mensaje" solo acepta 255 caracteres.';
-			isError = true;
-		}
-
-		return isError ? errors : null;
 	};
 
-	const { form, errors, handleChange, handleSubmit } = useForm(
-		initialData,
-		onValidate
-	);
+	const { form, handleChange } = useForm(dataInicial, validacion);
 
 	return (
 		<>
 			<section className="contacto" id="contacto">
 				<div className="login-box">
-					<form id="formulario-contacto" onSubmit={handleSubmit}>
+					<form
+						ref={refForm}
+						action=""
+						onSubmit={handleSubmit}
+						id="formulario-contacto"
+					>
 						<div className="container-box">
 							<div className="user-container">
 								<div className="user-box">
@@ -69,15 +64,17 @@ export const Contacto = () => {
 										value={form.nombre}
 										onChange={handleChange}
 										required
+										placeholder="Ej: Valentina Galetto"
 									/>
 									<label>Nombre Completo</label>
 								</div>
-								{errors.nombre && (
+
+								{error.nombre && (
 									<div className="warning">
 										<div className="warning__icon">
 											<Error />
 										</div>
-										<div className="warning__title">{errors.nombre}</div>
+										<div className="warning__title">{error.nombre}</div>
 									</div>
 								)}
 							</div>
@@ -91,16 +88,17 @@ export const Contacto = () => {
 										value={form.correo}
 										onChange={handleChange}
 										required
+										placeholder="Ej: correo@correo.com"
 									/>
 									<label>Correo Electronico</label>
 								</div>
 
-								{errors.correo && (
+								{error.correo && (
 									<div className="warning">
 										<div className="warning__icon">
 											<Error />
 										</div>
-										<div className="warning__title">{errors.correo}</div>
+										<div className="warning__title">{error.correo}</div>
 									</div>
 								)}
 							</div>
@@ -114,20 +112,22 @@ export const Contacto = () => {
 									name="telefono"
 									value={form.telefono}
 									onChange={handleChange}
+									placeholder="Ej: 2657001122"
 									required
 								/>
 								<label>Numero de Celular</label>
 							</div>
 
-							{errors.telefono && (
+							{error.telefono && (
 								<div className="warning">
 									<div className="warning__icon">
 										<Error />
 									</div>
-									<div className="warning__title">{errors.telefono}</div>
+									<div className="warning__title">{error.telefono}</div>
 								</div>
 							)}
 						</div>
+
 						<div className="user-container">
 							<div className="user-box">
 								<textarea
@@ -142,18 +142,18 @@ export const Contacto = () => {
 								</textarea>
 							</div>
 
-							{errors.mensaje && (
+							{error.mensaje && (
 								<div className="warning warning-mensaje">
 									<div className="warning__icon">
 										<Error />
 									</div>
-									<div className="warning__title">{errors.mensaje}</div>
+									<div className="warning__title">{error.mensaje}</div>
 								</div>
 							)}
 						</div>
 						<center>
-							<button id="btn-enviar">
-								ENVIAR
+							<button id="btn-enviar" disabled={enviar}>
+								{enviar ? "ENVIANDO..." : "ENVIAR"}
 								<span></span>
 							</button>
 						</center>

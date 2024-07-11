@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imagenes from "../../componentes/js/imagenes.js";
-import { Contacto } from "../../componentes/Contacto.jsx";
 
 export const Inicio = () => {
 	return (
@@ -14,7 +13,7 @@ export const Inicio = () => {
 					<div className="home__container">
 						<p className="home__container-parrafo">PASTELERÍA Y MÁS</p>
 						<Link className="home__container-btn" to="/comprar">
-							SHOP
+							COMPRAR
 						</Link>
 					</div>
 				</section>
