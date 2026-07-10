@@ -31,6 +31,13 @@ export const Header = ({
 			setCountProducts(0);
 		}
 	};
+
+	const finalizarCompra = () => {
+		const finalizar = confirm(
+			"¿Está seguro que desea eliminar todos sus productos del carrito?"
+		);
+	};
+
 	return (
 		<>
 			<nav className="nav">
@@ -101,6 +108,9 @@ export const Header = ({
 								<h3>Total:</h3>
 								<span className="total-pagar">${total}</span>
 							</div>
+							<Link to="/finalizar" className="carrito-link">
+								<button className="btn-finish">Finalizar Compra</button>
+							</Link>
 							<button className="btn-clear" onClick={vaciarCarrito}>
 								Vaciar Carrito
 							</button>

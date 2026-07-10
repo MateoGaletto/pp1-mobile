@@ -1,0 +1,161 @@
+.carrito-final {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px 30px;
+
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.carrito-final h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* --- opciones de entrega --- */
+
+.opsEntrega {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.op-entrega {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 20px;
+  border: 2px solid #eee;
+  border-radius: var(--radius-sm);
+
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.op-entrega:hover {
+  border-color: var(--color-acento);
+  background-color: var(--color-fondo);
+}
+
+/* Resalta la opción cuando su radio está seleccionado */
+.op-entrega:has(input:checked) {
+  border-color: var(--color-acento);
+  background-color: rgba(240, 148, 145, 0.08);
+}
+
+.op-entrega input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.op-entrega input[type="radio"]:checked {
+  border-color: var(--color-acento);
+}
+
+.op-entrega input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+}
+
+/* --- error de validación --- */
+
+.error-entrega {
+  color: #d64545;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px 0 0 4px;
+}
+
+/* --- botones --- */
+
+.modal-botones {
+  display: flex;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+  flex: 1;
+  border: none;
+  padding: 14px 0;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.btn-cancelar {
+  background-color: #eee;
+  color: var(--color-texto);
+}
+
+.btn-cancelar:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-confirmar {
+  background-color: var(--color-acento);
+  color: #fff;
+}
+
+.btn-confirmar:hover {
+  background-color: var(--color-acento-hover);
+}
+
+/* ============================================
+   RESPONSIVE — mismos breakpoints que el resto
+   del sitio (690px y 1024px)
+============================================ */
+
+@media (max-width: 690px) {
+  .carrito-final {
+    margin: 30px 16px;
+    padding: 28px 20px;
+  }
+
+  .carrito-final h3 {
+    font-size: 18px;
+  }
+
+  .op-entrega {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+
+  .modal-botones {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carrito-final {
+    margin: 100px auto;
+    padding: 50px 40px;
+  }
+}

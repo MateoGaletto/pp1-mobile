@@ -25,6 +25,11 @@ export const ListaProds = ({
 		setTotal(total + product.precio * product.cantidad);
 		setCountProducts(countProducts + product.cantidad);
 		setAllProducts([...allProducts, product]);
+
+		const guardarLocal = () => {
+			localStorage.setItem("carrito", JSON.stringify(allProducts)); //No funciona localStorage
+		};
+		guardarLocal();
 	};
 
 	return (

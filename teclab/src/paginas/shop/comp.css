@@ -1,0 +1,486 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat-Light.ttf);
+  font-weight: 300;
+}
+
+/* ---------diseños generales--------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta */
+  --color-fondo: #f6f6f6;
+  --color-crema: #fdf0ea;
+  --color-texto: #3c3c3b;
+  --color-acento: #f09491;
+  --color-acento-hover: #d97873;
+  --color-footer: #9b787e;
+
+  /* Sistema de diseño */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --shadow-card: 0 2px 8px rgba(60, 60, 59, 0.08);
+  --shadow-card-hover: 0 6px 16px rgba(60, 60, 59, 0.12);
+  --shadow-dropdown: 0 12px 32px rgba(0, 0, 0, 0.14);
+  --transition-base: all 0.25s ease;
+}
+
+body {
+  font-family: Montserrat, "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 10vh;
+}
+
+/* _------_ */
+
+.container__flex {
+  background-color: var(--color-crema);
+}
+
+.nav__cart-container {
+  position: absolute;
+  right: 20px;
+}
+
+.icon-cart {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 0.7vh 0.9vh;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: var(--transition-base);
+}
+
+.icon-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.count-products {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+
+  background-color: var(--color-texto);
+  color: #fff;
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff;
+}
+
+#count-products {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* header carrito */
+
+.container-cart-products {
+  position: absolute;
+  top: 55px;
+  right: 60px;
+  width: 500px;
+  background-color: #fff;
+  z-index: 1;
+  box-shadow: var(--shadow-dropdown);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  animation: change-size 0.35s ease;
+}
+
+@keyframes change-size {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 30px;
+
+  border-bottom: 1px solid rgba(60, 60, 59, 0.1);
+  transition: var(--transition-base);
+}
+
+.cart-product:hover {
+  background-color: var(--color-fondo);
+}
+
+.info-cart-product {
+  display: flex;
+  justify-content: space-between;
+  flex: 0.8;
+}
+
+.titulo-producto-carrito {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.precio-producto-carrito {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-acento-hover);
+}
+
+.cantidad-producto-carrito {
+  font-weight: 500;
+  font-size: 16px;
+  color: #8a8a8a;
+}
+
+.icon-close {
+  width: 22px;
+  height: 22px;
+  transition: var(--transition-base);
+}
+
+.icon-close:hover {
+  stroke: var(--color-acento-hover);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 0;
+  gap: 20px;
+}
+
+.cart-total h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.total-pagar {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-acento-hover);
+}
+
+.hidden-cart {
+  display: none;
+}
+
+.cart-empty {
+  font-size: 16px;
+  font-weight: 500;
+  color: #8a8a8a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh 1vh;
+}
+
+.btn-clear {
+  border: none;
+  background-color: var(--color-texto);
+  color: #fff;
+  padding: 16px 0;
+  display: block;
+  width: 100%;
+
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: var(--transition-base);
+}
+
+.btn-clear:hover {
+  background-color: #222;
+}
+
+.btn-finish {
+  border: none;
+  background-color: #6fd65c;
+  color: #163510;
+  padding: 16px 0;
+  display: block;
+  width: 100%;
+
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: var(--transition-base);
+}
+
+.btn-finish:hover {
+  background-color: #58bf45;
+}
+
+.carrito-link {
+  text-decoration: none;
+}
+
+/*----------- MAIN ---------------*/
+
+.comprar_title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 30px 0 40px 0;
+  color: var(--color-texto);
+}
+
+/* ==============================================
+   GRID DE PRODUCTOS — rediseñado para ser más
+   minimalista y compacto:
+   - CSS Grid en vez de flex + width fijo, así entran
+     más columnas automáticamente según el ancho
+     disponible, sin depender de tantos breakpoints.
+   - Imagen con altura fija (antes 40vh, ahora 160px),
+     ya no invade toda la card.
+   - Sombra más sutil y bordes más finos = más "limpio".
+============================================== */
+
+.container__flex {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.container-prods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.flex-item {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-bottom: 54px; /* espacio reservado para el botón de agregar */
+  margin-bottom: 0;
+  border: 1px solid rgba(60, 60, 59, 0.08);
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  overflow: hidden;
+
+  box-shadow: none;
+  transition: var(--transition-base);
+}
+
+.flex-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  border-color: transparent;
+}
+
+/* img */
+.flex-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+/* name */
+.name-product {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0 2px 12px;
+}
+
+/* price */
+.price {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-acento-hover);
+  margin-left: 12px;
+}
+
+/* contador de items */
+.item-count {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 8px 0 0 12px;
+}
+
+.item-count button {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-acento);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.item-count button:last-of-type {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+.item-count button:hover {
+  background-color: var(--color-acento-hover);
+  transform: scale(1.08);
+}
+
+/* boton */
+.add-product {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  min-height: 40px;
+  outline: none;
+  border: none;
+  background-color: var(--color-acento);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.add-product:hover {
+  background-color: var(--color-acento-hover);
+}
+
+/* ============================================
+   TABLET
+============================================ */
+@media (min-width: 691px) and (max-width: 1023px) {
+  .comprar_title {
+    text-align: center;
+  }
+
+  .container-prods {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* --- navbar --- */
+  .nav__shop-container {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .ishop {
+    width: 100%;
+    height: 50%;
+  }
+
+  .icon-shop {
+    position: absolute;
+    left: 520px;
+    width: 100%;
+  }
+
+  .count-products {
+    width: 26px;
+    height: 26px;
+  }
+
+  #count-products {
+    font-size: 12px;
+  }
+
+  /* --main-- */
+
+  .comprar_title {
+    font-size: 46px;
+    margin: 30px 0 30px 8%;
+  }
+
+  .container-prods {
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .flex-item img {
+    height: 180px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-prods {
+    max-width: 1500px;
+  }
+}
+
+@media (max-width: 690px) {
+  .container-cart-products {
+    width: 300px;
+  }
+
+  .titulo-producto-carrito {
+    font-size: 14px;
+    margin-left: 20px;
+  }
+
+  .precio-producto-carrito {
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 3px;
+  }
+
+  .cantidad-producto-carrito {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .icon-close {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cart-total h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .total-pagar {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .cart-empty {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+  }
+
+  .btn-clear {
+    font-size: 15px;
+  }
+}

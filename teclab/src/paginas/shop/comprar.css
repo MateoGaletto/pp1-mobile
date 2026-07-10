@@ -68,14 +68,24 @@ body {
 
 .container-cart-products {
 	position: absolute;
-	top: 45px;
-	right: 40px;
-
-	background-color: #fff;
+	top: 50px;
+	right: 60px;
 	width: 500px;
+	background-color: #fff;
 	z-index: 1;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
+	animation: change-size 0.5s ease;
+}
+
+@keyframes change-size {
+	0% {
+		width: 200px;
+	}
+
+	100% {
+		width: 500px;
+	}
 }
 
 .cart-product {
@@ -180,7 +190,12 @@ body {
 
 	cursor: pointer;
 	font-size: 16px;
+	font-weight: 600;
 	transition: all 0.3s ease;
+}
+
+.btn-finish:hover {
+	background-color: #62bf54;
 }
 
 .carrito-link {
