@@ -1,3 +1,10 @@
+/* ============================================
+   PÁGINA: CarritoFinal (/finalizar)
+   Usa las mismas variables definidas en
+   styles-mejorado.css — asegúrate de que ese
+   archivo (o su :root) esté cargado antes que este.
+============================================ */
+
 .carrito-final {
   max-width: 500px;
   margin: 60px auto;
@@ -14,6 +21,52 @@
   color: var(--color-texto);
   margin-bottom: 24px;
   text-align: center;
+}
+
+.carrito-final h3:not(:first-of-type) {
+  margin-top: 34px;
+}
+
+/* --- datos personales --- */
+
+.datos-personales {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.campo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+}
+
+.campo-input input {
+  padding: 13px 16px;
+  border: 2px solid #eee;
+  border-radius: var(--radius-sm);
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-texto);
+
+  transition: var(--transition-base);
+}
+
+.campo-input input::placeholder {
+  color: #b8b8b8;
+  font-weight: 400;
+}
+
+.campo-input input:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  background-color: rgba(240, 148, 145, 0.05);
 }
 
 /* --- opciones de entrega --- */
@@ -141,6 +194,15 @@
 
   .carrito-final h3 {
     font-size: 18px;
+  }
+
+  .campo-input {
+    font-size: 13px;
+  }
+
+  .campo-input input {
+    font-size: 14px;
+    padding: 11px 14px;
   }
 
   .op-entrega {

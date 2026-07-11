@@ -1,0 +1,101 @@
+/* ============================================
+   PÁGINA: SeleccionCategoria (/comprar)
+   Depende de las variables de :root definidas
+   en styles-mejorado.css
+============================================ */
+
+.seleccion-categoria {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.seleccion-titulo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 40px;
+}
+
+.banderas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bandera {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px 20px;
+  background-color: var(--color-crema);
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+
+  text-decoration: none;
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.bandera::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: var(--color-acento);
+  transition: var(--transition-base);
+}
+
+.bandera-label {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-texto);
+  letter-spacing: 0.02em;
+  transition: var(--transition-base);
+}
+
+.bandera:hover {
+  background-color: #fff;
+  border-color: var(--color-acento);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.bandera:hover::before {
+  width: 100%;
+  opacity: 0.08;
+}
+
+.bandera:hover .bandera-label {
+  color: var(--color-acento-hover);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (min-width: 691px) {
+  .banderas-container {
+    flex-direction: row;
+  }
+
+  .bandera {
+    flex: 1;
+    padding: 50px 20px;
+  }
+}
+
+@media (max-width: 690px) {
+  .seleccion-titulo {
+    font-size: 22px;
+  }
+
+  .bandera-label {
+    font-size: 17px;
+  }
+}

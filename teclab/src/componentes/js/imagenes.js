@@ -35,48 +35,50 @@ import patagonia from "../../img/postres/patagonia.jpg";
 import matilda from "../../img/postres/matilda.jpg";
 import mousse from "../../img/postres/mousse.jpg";
 import dobleOreo from "../../img/postres/dobleoreo.jpg";
+import keylemon from "../../img/postres/keylemon.jpg";
 
 //-------------------------------------------
 
 //EXPORTACION DE IMAGENES
 export default {
-	// logos
-	img1: logoSolo,
-	img2: logoGrande,
-	img3: fondoContacto,
+  // logos
+  img1: logoSolo,
+  img2: logoGrande,
+  img3: fondoContacto,
 
-	// facturas
-	img4: comun,
-	img5: pastelera,
-	img6: frutilla,
-	img7: chocotorta,
-	img8: nutella,
-	img9: nutellaSinFondo,
+  // facturas
+  img4: comun,
+  img5: pastelera,
+  img6: frutilla,
+  img7: chocotorta,
+  img8: nutella,
+  img9: nutellaSinFondo,
 
-	// otros
-	img10: cañoncitos,
-	img11: postres,
-	img12: scones,
+  // otros
+  img10: cañoncitos,
+  img11: postres,
+  img12: scones,
 
-	// facturas otras
-	img13: docena,
-	img14: mediaDocena,
-	img15: docenaComun,
+  // facturas otras
+  img13: docena,
+  img14: mediaDocena,
+  img15: docenaComun,
 
-	// otrosShop
-	img16: alfNegro,
-	img17: alfBlanco,
-	img18: alfMaicena,
-	img19: bizcochos,
-	img20: chipa,
+  // otrosShop
+  img16: alfNegro,
+  img17: alfBlanco,
+  img18: alfMaicena,
+  img19: bizcochos,
+  img20: chipa,
 
-	// postres
-	img21: carrot,
-	img22: frutosRojos,
-	img23: maracuya,
-	img24: redVelvet,
-	img25: patagonia,
-	img26: matilda,
-	img27: mousse,
-	img28: dobleOreo,
+  // postres
+  img21: carrot,
+  img22: frutosRojos,
+  img23: maracuya,
+  img24: redVelvet,
+  img25: patagonia,
+  img26: matilda,
+  img27: mousse,
+  img28: dobleOreo,
+  img29: keylemon,
 };

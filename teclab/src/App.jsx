@@ -5,6 +5,7 @@ import { Header } from "./componentes/Header.jsx";
 import { Inicio } from "./paginas/inicio/Inicio.jsx";
 import { Footer } from "./componentes/Footer.jsx";
 import { ListaProds } from "./paginas/shop/ListaProds.jsx";
+import { SeleccionCategoria } from "./paginas/shop/Seleccioncategoria.jsx";
 import { Contacto } from "./paginas/contacto/Contacto.jsx";
 import { CarritoFinal } from "./paginas/afterShop/CarritoFinal.jsx";
 import { Confirmacion } from "./paginas/afterShop/Confirmacion.jsx";
@@ -27,8 +28,9 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/contacto" element={<Contacto />}></Route>
+        <Route path="/comprar" element={<SeleccionCategoria />} />
         <Route
-          path="/comprar"
+          path="/comprar/:categoria"
           element={
             <ListaProds
               allProducts={allProducts}
@@ -40,7 +42,18 @@ export const App = () => {
             />
           }
         />
-        <Route path="/finalizar" element={<CarritoFinal />}></Route>
+        <Route
+          path="/finalizar"
+          element={
+            <CarritoFinal
+              allProducts={allProducts}
+              setAllProducts={setAllProducts}
+              total={total}
+              setTotal={setTotal}
+              setCountProducts={setCountProducts}
+            />
+          }
+        ></Route>
         <Route path="/confirmacion" element={<Confirmacion />}></Route>
       </Routes>
       <Footer />

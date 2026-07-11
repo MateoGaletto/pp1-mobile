@@ -484,3 +484,18 @@ body {
     font-size: 15px;
   }
 }
+
+/* --- link para volver a elegir categoría (en /comprar/:categoria) --- */
+.volver-categorias {
+  display: inline-block;
+  margin: 0 0 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-acento-hover);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.volver-categorias:hover {
+  text-decoration: underline;
+}

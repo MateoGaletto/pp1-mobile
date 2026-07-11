@@ -1,29 +1,30 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./confirmacion.css";
 
-// Genera un número de pedido aleatorio, ej: "PED-48213"
 const generarNumeroPedido = () => {
   const numero = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
   return `PED-${numero}`;
 };
 
 export const Confirmacion = () => {
-  // useState con función inicializadora: se ejecuta solo una vez,
-  // así el número no cambia en cada re-render del componente.
-  const [numeroPedido] = useState(generarNumeroPedido);
+  const location = useLocation();
+  const datosPedido = location.state;
+
+  /*Si el usuario entra directo a /confirmacion sin pasar por el checkout (ej. refrescando la página), no hay datosPedido, 
+  en ese caso generamos un numero igual para no romper la vista.*/
+  const numeroPedido = datosPedido?.numeroPedido ?? generarNumeroPedido();
 
   return (
     <main>
       <div className="confirmacion-pedido">
+        <div className="check-icon">✓</div>
+
         <h3>¡Tu pedido fue confirmado!</h3>
         <p>
-          Pulsa <a href="">aqui</a> para dirigirte a nuestro Whatsapp y
-          confirmar tu pedido
+          Te redirigimos a WhatsApp para que envíes tu pedido y coordines con
+          nosotros.
         </p>
-        <a href="" className="link">
-          link de wsp
-        </a>
 
         <div className="numero-pedido">
           <span>Número de pedido</span>

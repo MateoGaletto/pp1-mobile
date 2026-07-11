@@ -1,57 +1,115 @@
 import React, { useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import { productos } from "../../componentes/js/productos";
 import { Typed } from "../../componentes/Typed";
+import { CATEGORIAS } from "./Seleccioncategoria";
+import {
+  SeleccionSabores,
+  requiereSabores,
+  cantidadRequerida,
+} from "./SeleccionSabores";
 
 export const ListaProds = ({
-	allProducts,
-	setAllProducts,
-	countProducts,
-	setCountProducts,
-	total,
-	setTotal,
+  allProducts,
+  setAllProducts,
+  countProducts,
+  setCountProducts,
+  total,
+  setTotal,
 }) => {
-	const agregarAlCarrito = (product) => {
-		if (allProducts.find((item) => item.id === product.id)) {
-			const products = allProducts.map((item) =>
-				item.id === product.id ? { ...item, cantidad: item.cantidad + 1 } : item
-			);
+  const { categoria } = useParams();
+  const infoCategoria = CATEGORIAS[categoria];
 
-			setTotal(total + product.precio * product.cantidad);
-			setCountProducts(countProducts + product.cantidad);
+  // Producto sobre el que se está eligiendo sabores (null = modal cerrado)
+  const [productoSeleccionandoSabores, setProductoSeleccionandoSabores] =
+    useState(null);
 
-			return setAllProducts([...products]);
-		}
+  const productosFiltrados = infoCategoria
+    ? productos.filter((p) => p.category === infoCategoria.categoriaProducto)
+    : productos;
 
-		setTotal(total + product.precio * product.cantidad);
-		setCountProducts(countProducts + product.cantidad);
-		setAllProducts([...allProducts, product]);
+  const agregarAlCarrito = (product, sabores = null) => {
+    if (sabores) {
+      const itemConSabores = {
+        ...product,
+        id: `${product.id}-${Date.now()}`,
+        cantidad: 1,
+        sabores,
+      };
 
-		const guardarLocal = () => {
-			localStorage.setItem("carrito", JSON.stringify(allProducts)); //No funciona localStorage
-		};
-		guardarLocal();
-	};
+      setTotal(total + product.precio);
+      setCountProducts(countProducts + 1);
+      setAllProducts([...allProducts, itemConSabores]);
+      return;
+    }
 
-	return (
-		<div id="shopContent" className="container__flex">
-			<Typed />
+    if (allProducts.find((item) => item.id === product.id)) {
+      const products = allProducts.map((item) =>
+        item.id === product.id
+          ? { ...item, cantidad: item.cantidad + 1 }
+          : item,
+      );
 
-			<div className="container-prods">
-				{productos.map((product) => (
-					<div className="flex-item" key={product.id}>
-						<img src={product.img} alt={product.nombre} />
-						<h2 className="name-product">{product.nombre}</h2>
-						<p className="price">${product.precio}</p>
+      setTotal(total + product.precio * product.cantidad);
+      setCountProducts(countProducts + product.cantidad);
 
-						<button
-							className="add-product"
-							onClick={() => agregarAlCarrito(product)}
-						>
-							Añadir al carrito
-						</button>
-					</div>
-				))}
-			</div>
-		</div>
-	);
+      return setAllProducts([...products]);
+    }
+
+    setTotal(total + product.precio * product.cantidad);
+    setCountProducts(countProducts + product.cantidad);
+    setAllProducts([...allProducts, product]);
+  };
+
+  const handleClickAgregar = (product) => {
+    if (requiereSabores(product.nombre)) {
+      setProductoSeleccionandoSabores(product);
+      return;
+    }
+    agregarAlCarrito(product);
+  };
+
+  const handleConfirmarSabores = (saboresSeleccionados) => {
+    agregarAlCarrito(productoSeleccionandoSabores, saboresSeleccionados);
+    setProductoSeleccionandoSabores(null);
+  };
+
+  return (
+    <div id="shopContent" className="container__flex">
+      <Typed />
+
+      {infoCategoria && (
+        <Link to="/comprar" className="volver-categorias">
+          ← Cambiar categoría
+        </Link>
+      )}
+
+      <div className="container-prods">
+        {productosFiltrados.map((product) => (
+          <div className="flex-item" key={product.id}>
+            <img src={product.img} alt={product.nombre} />
+            <h2 className="name-product">{product.nombre}</h2>
+            <p className="price">${product.precio}</p>
+
+            <button
+              className="add-product"
+              onClick={() => handleClickAgregar(product)}
+            >
+              {requiereSabores(product.nombre)
+                ? "Elegir sabores"
+                : "Añadir al carrito"}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {productoSeleccionandoSabores && (
+        <SeleccionSabores
+          producto={productoSeleccionandoSabores}
+          onClose={() => setProductoSeleccionandoSabores(null)}
+          onConfirm={handleConfirmarSabores}
+        />
+      )}
+    </div>
+  );
 };
