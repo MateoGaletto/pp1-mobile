@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { calcularEnvio } from "../../componentes/js/envioCalculo";
 import "./carritoFinal.css";
 
-const WHATSAPP_NUMBER = "542657612401";
+const WHATSAPP_NUMBER = "542657715123";
 
 const generarNumeroPedido = () => {
   const numero = Math.floor(10000 + Math.random() * 90000);

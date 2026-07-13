@@ -2,11 +2,18 @@ import React from "react";
 import ScrollToTop from "react-scroll-to-top";
 
 export const Footer = () => {
+  const anioInicio = 2024;
+  const anioActual = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <h4 className="footer__container-titulo">Valentina Galetto Pastelería</h4>
       <p className="footer__container-derechos">
-        Copyright © 2024 - Diseño Web realizado por <b>Mateo Galetto Estrada</b>
+        Copyright ©{" "}
+        {anioInicio === anioActual
+          ? anioActual
+          : `${anioInicio} - ${anioActual}`}{" "}
+        - Diseño Web realizado por <b>Mateo Galetto Estrada</b>
       </p>
 
       <ScrollToTop

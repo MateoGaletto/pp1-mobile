@@ -97,7 +97,7 @@ export const Inicio = () => {
                 <img src={imagenes.img12} loading="lazy" />
                 <h3>Scones</h3>
                 <p>
-                  Deliciosamente dorado y con un aroma tentador, este scone de
+                  Deliciosamente dorado y con un aroma tentador, este scon de
                   queso es una obra maestra de la repostería. Su exterior
                   crujiente esconde un interior suave y esponjoso, impregnado
                   con el rico sabor del queso derretido. El equilibrio entre lo
@@ -120,16 +120,19 @@ export const Inicio = () => {
                   Chocolate, entre otras.
                 </p>
               </div>
-              <div className="otros__img-basis cañoncitos">
+              <div className="otros__img-basis congelados">
                 <img src={imagenes.img10} loading="lazy" />
-                <h3>Cañoncitos</h3>
+                <h3>Congelados</h3>
                 <p>
-                  Los cañoncitos son pequeños rollos de masa horneada, cuyo
-                  interior es suave y esponjoso, y puede estar relleno con dulce
-                  de leche ó pastelera.
+                  Vendemos productos congelados, todos de nuestra elaboración.
                   <br />
-                  Los cañoncitos de dulce de leche y de pastelera son dos
-                  delicias de la repostería con encanto propio.
+                  Ideales para tener siempre a mano y disfrutar cuando quieras,
+                  sin resignar el sabor casero de siempre.
+                  <br />
+                  <Link to="/contacto" className="link-contact">
+                    Contactanos
+                  </Link>
+                  <span> </span> para saber mas info 😊
                 </p>
               </div>
             </div>

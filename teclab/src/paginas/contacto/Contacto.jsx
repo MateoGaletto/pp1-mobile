@@ -48,6 +48,9 @@ export const Contacto = () => {
     <>
       <section className="contacto" id="contacto">
         <div className="login-box">
+          <p className="titulo-cont">
+            Completa tus datos y envianos un mensaje a nuestro mail desde aca!
+          </p>
           <form
             ref={refForm}
             action=""

@@ -17,7 +17,7 @@ import mediaDocena from "../../img/facturas/media.jpg";
 import docenaComun from "../../img/facturas/docenaComun.jpg";
 
 //otros
-import cañoncitos from "../../img/otros/cañoncitos.png";
+import congelados from "../../img/otros/congelados.jpg";
 import postres from "../../img/otros/porciones.jpg";
 import scones from "../../img/otros/scones.jpg";
 import alfNegro from "../../img/otros/alfNegro.jpg";
@@ -55,7 +55,7 @@ export default {
   img9: nutellaSinFondo,
 
   // otros
-  img10: cañoncitos,
+  img10: congelados,
   img11: postres,
   img12: scones,
 

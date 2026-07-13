@@ -689,6 +689,7 @@ body {
 
 .otros__img-basis img {
   max-width: 300px;
+  max-height: 400px;
 }
 
 .otros__img-basis h3 {
@@ -703,6 +704,15 @@ body {
 .otros__img-basis p,
 .otros__img-basis h3 {
   text-align: left;
+}
+
+.congelados img {
+  height: 400px;
+}
+
+.congelados .link-contact {
+  color: var(--color-letra3);
+  font-weight: 1000;
 }
 
 /*--------- DISEÑO DE SECCION 5 (CONTACTO) ---------*/
@@ -732,6 +742,13 @@ body {
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+}
+
+.login-box .titulo-cont {
+  color: #ffffff93;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .user-container {
