@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { calcularEnvio } from "../../componentes/js/envioCalculo";
 import "./carritoFinal.css";
 
 const WHATSAPP_NUMBER = "542657612401";
 
 const generarNumeroPedido = () => {
-  const numero = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
+  const numero = Math.floor(10000 + Math.random() * 90000);
   return `PED-${numero}`;
 };
 
@@ -18,6 +19,8 @@ const formatearMensaje = ({
   opcionEntrega,
   allProducts,
   total,
+  distanciaKm,
+  costoEnvio,
 }) => {
   const metodoPagoTexto =
     metodoPago === "transferencia" ? "Transferencia" : "Efectivo";
@@ -35,12 +38,35 @@ const formatearMensaje = ({
       }
 
       const detalleSabores = p.sabores
-        .map((s) => `   • ${s.cantidad} ${s.sabor}`)
+        .map((s) => {
+          let linea = `   • ${s.cantidad} ${s.sabor}`;
+
+          const extras = [];
+          if (s.mermeladas && s.mermeladas.length > 0) {
+            extras.push(`mermelada: ${s.mermeladas.join(", ")}`);
+          }
+          if (s.toppings && s.toppings.length > 0) {
+            extras.push(`topping: ${s.toppings.join(", ")}`);
+          }
+
+          if (extras.length > 0) {
+            linea += ` (${extras.join(" / ")})`;
+          }
+
+          return linea;
+        })
         .join("\n");
 
       return `${lineaProducto}\n${detalleSabores}`;
     })
     .join("\n");
+
+  const lineaEnvio =
+    opcionEntrega === "domicilio"
+      ? `\n*Envío (${distanciaKm} km): $${costoEnvio}*`
+      : "";
+
+  const totalFinal = opcionEntrega === "domicilio" ? total + costoEnvio : total;
 
   return (
     `Hola! Quiero confirmar mi pedido *${numeroPedido}*\n\n` +
@@ -49,7 +75,9 @@ const formatearMensaje = ({
     `Teléfono: ${numero}\n` +
     `Dirección: ${direccion}\n\n` +
     `*Productos*\n${listaProductos}\n\n` +
-    `*Total: $${total}*\n\n` +
+    `*Subtotal: $${total}*` +
+    `${lineaEnvio}\n` +
+    `*Total: $${totalFinal}*\n\n` +
     `*Método de pago:* ${metodoPagoTexto}\n` +
     `*Entrega:* ${opcionEntregaTexto}`
   );
@@ -71,8 +99,48 @@ export const CarritoFinal = ({
   const [metodoPago, setMetodoPago] = useState("");
   const [opcionEntrega, setOpcionEntrega] = useState("");
 
+  // Cálculo de envío
+  const [calculandoEnvio, setCalculandoEnvio] = useState(false);
+  const [errorEnvio, setErrorEnvio] = useState("");
+  const [distanciaKm, setDistanciaKm] = useState(null);
+  const [costoEnvio, setCostoEnvio] = useState(null);
+  const [urlMapsRuta, setUrlMapsRuta] = useState(null);
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Si el usuario cambia la dirección después de haber calculado el
+  // envío, invalidamos el resultado para forzar un nuevo cálculo.
+  const handleChangeDireccion = (valor) => {
+    setDireccion(valor);
+    setDistanciaKm(null);
+    setCostoEnvio(null);
+    setUrlMapsRuta(null);
+    setErrorEnvio("");
+  };
+
+  const handleCalcularEnvio = async () => {
+    if (!direccion.trim()) {
+      setErrorEnvio("Ingresá tu dirección arriba para calcular el envío");
+      return;
+    }
+
+    setCalculandoEnvio(true);
+    setErrorEnvio("");
+
+    try {
+      const resultado = await calcularEnvio(direccion);
+      setDistanciaKm(resultado.distanciaKm);
+      setCostoEnvio(resultado.costoEnvio);
+      setUrlMapsRuta(resultado.urlMapsRuta);
+    } catch (e) {
+      setErrorEnvio(
+        "No pudimos encontrar esa dirección. Revisá que esté bien escrita.",
+      );
+    } finally {
+      setCalculandoEnvio(false);
+    }
+  };
 
   const handleConfirmar = () => {
     if (!nombreCompleto.trim() || !numero.trim() || !direccion.trim()) {
@@ -90,6 +158,11 @@ export const CarritoFinal = ({
       return;
     }
 
+    if (opcionEntrega === "domicilio" && costoEnvio === null) {
+      setError("Calculá el costo de envío antes de continuar");
+      return;
+    }
+
     setError("");
 
     const numeroPedido = generarNumeroPedido();
@@ -103,6 +176,8 @@ export const CarritoFinal = ({
       opcionEntrega,
       allProducts,
       total,
+      distanciaKm,
+      costoEnvio,
     };
 
     const mensaje = formatearMensaje(datosPedido);
@@ -110,15 +185,12 @@ export const CarritoFinal = ({
       mensaje,
     )}`;
 
-    // Abre WhatsApp en una pestaña nueva, sin sacar al usuario de la app
     window.open(urlWhatsapp, "_blank");
 
-    // Vacía el carrito ya que el pedido se confirmó
     setAllProducts([]);
     setTotal(0);
     setCountProducts(0);
 
-    // Lleva al usuario a la página de confirmación con los datos del pedido
     navigate("/confirmacion", { state: datosPedido });
   };
 
@@ -142,7 +214,7 @@ export const CarritoFinal = ({
             Número de teléfono
             <input
               type="tel"
-              placeholder="Ej: 2664123456"
+              placeholder="Ej: 2657123456"
               value={numero}
               onChange={(e) => setNumero(e.target.value)}
             />
@@ -154,7 +226,7 @@ export const CarritoFinal = ({
               type="text"
               placeholder="Ej: San Martín 1234"
               value={direccion}
-              onChange={(e) => setDireccion(e.target.value)}
+              onChange={(e) => handleChangeDireccion(e.target.value)}
             />
           </label>
         </div>
@@ -210,6 +282,44 @@ export const CarritoFinal = ({
             />
           </label>
         </div>
+
+        {opcionEntrega === "domicilio" && (
+          <div className="envio-container">
+            <button
+              type="button"
+              className="btn-calcular-envio"
+              onClick={handleCalcularEnvio}
+              disabled={calculandoEnvio}
+            >
+              {calculandoEnvio
+                ? "Calculando..."
+                : costoEnvio !== null
+                  ? "Volver a calcular"
+                  : "Calcular costo de envío"}
+            </button>
+
+            {errorEnvio && <p className="error-entrega">{errorEnvio}</p>}
+
+            {costoEnvio !== null && (
+              <div className="envio-resultado">
+                <p>
+                  Distancia aproximada: <strong>{distanciaKm} km</strong>
+                </p>
+                <p>
+                  Costo de envío: <strong>${costoEnvio}</strong>
+                </p>
+                <a
+                  href={urlMapsRuta}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="envio-link-maps"
+                >
+                  Ver ruta en Google Maps ↗
+                </a>
+              </div>
+            )}
+          </div>
+        )}
 
         {error && <p className="error-entrega">{error}</p>}
 

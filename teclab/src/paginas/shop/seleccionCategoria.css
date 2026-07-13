@@ -1,9 +1,3 @@
-/* ============================================
-   PÁGINA: SeleccionCategoria (/comprar)
-   Depende de las variables de :root definidas
-   en styles-mejorado.css
-============================================ */
-
 .seleccion-categoria {
   max-width: 900px;
   margin: 0 auto;

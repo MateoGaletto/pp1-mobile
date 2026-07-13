@@ -1,10 +1,3 @@
-/* ============================================
-   PÁGINA: CarritoFinal (/finalizar)
-   Usa las mismas variables definidas en
-   styles-mejorado.css — asegúrate de que ese
-   archivo (o su :root) esté cargado antes que este.
-============================================ */
-
 .carrito-final {
   max-width: 500px;
   margin: 60px auto;
@@ -182,8 +175,7 @@
 }
 
 /* ============================================
-   RESPONSIVE — mismos breakpoints que el resto
-   del sitio (690px y 1024px)
+   RESPONSIVE 
 ============================================ */
 
 @media (max-width: 690px) {
@@ -220,4 +212,66 @@
     margin: 100px auto;
     padding: 50px 40px;
   }
+}
+
+/* --- cálculo de envío --- */
+
+.envio-container {
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+.btn-calcular-envio {
+  width: 100%;
+  border: 2px solid var(--color-acento);
+  background-color: transparent;
+  color: var(--color-acento-hover);
+  padding: 13px 0;
+  border-radius: var(--radius-sm);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.btn-calcular-envio:hover:not(:disabled) {
+  background-color: var(--color-acento);
+  color: #fff;
+}
+
+.btn-calcular-envio:disabled {
+  border-color: #ddd;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.envio-resultado {
+  margin-top: 14px;
+  padding: 16px 18px;
+  background-color: var(--color-fondo);
+  border-radius: var(--radius-sm);
+}
+
+.envio-resultado p {
+  font-size: 14px;
+  color: var(--color-texto);
+  margin-bottom: 4px;
+}
+
+.envio-resultado p:last-of-type {
+  margin-bottom: 10px;
+}
+
+.envio-link-maps {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-acento-hover);
+  text-decoration: none;
+}
+
+.envio-link-maps:hover {
+  text-decoration: underline;
 }

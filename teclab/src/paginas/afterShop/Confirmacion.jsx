@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./confirmacion.css";
 
 const generarNumeroPedido = () => {
-  const numero = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
+  const numero = Math.floor(10000 + Math.random() * 90000);
   return `PED-${numero}`;
 };
 
@@ -11,8 +11,8 @@ export const Confirmacion = () => {
   const location = useLocation();
   const datosPedido = location.state;
 
-  /*Si el usuario entra directo a /confirmacion sin pasar por el checkout (ej. refrescando la página), no hay datosPedido, 
-  en ese caso generamos un numero igual para no romper la vista.*/
+  /*Si el usuario entra directo a /confirmacion sin pasar por el checkout, no hay datosPedido, 
+  en ese caso genero un numero igual para no romper la vista.*/
   const numeroPedido = datosPedido?.numeroPedido ?? generarNumeroPedido();
 
   return (

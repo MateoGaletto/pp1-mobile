@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import ShopCart from "./Icon/ShopCart.jsx";
+import Home from "./Icon/Home.jsx";
+import Mail from "./Icon/Mail.jsx";
+import Bag from "./Icon/Bag.jsx";
 
 export const Header = ({
   allProducts,
@@ -45,31 +48,45 @@ export const Header = ({
     }
   };
 
-  const finalizarCompra = () => {
-    const finalizar = confirm(
-      "¿Está seguro que desea eliminar todos sus productos del carrito?",
-    );
-  };
-
   return (
     <>
       <nav className="nav">
         <div className="nav__ul-container">
           <ul className="nav__ul">
             <li className="nav__item">
-              <Link to="/" className="nav__link">
-                Inicio
-              </Link>
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  `nav__link ${isActive ? "active" : ""}`
+                }
+              >
+                <Home />
+
+                <span className="nav__tooltip">Inicio</span>
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link to="/contacto" className="nav__link">
-                Contacto
-              </Link>
+              <NavLink
+                to="/contacto"
+                className={({ isActive }) =>
+                  `nav__link ${isActive ? "active" : ""}`
+                }
+              >
+                <Mail />
+                <span className="nav__tooltip">Contacto</span>
+              </NavLink>
             </li>
             <li className="nav__item">
-              <Link to="/comprar" className="nav__link">
-                Shop
-              </Link>
+              <NavLink
+                to="/comprar"
+                className={({ isActive }) =>
+                  `nav__link ${isActive ? "active" : ""}`
+                }
+              >
+                <Bag />
+                <span className="nav__tooltip">Shop</span>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -125,7 +142,11 @@ export const Header = ({
                   <h3>Total:</h3>
                   <span className="total-pagar">${total}</span>
                 </div>
-                <Link to="/finalizar" className="carrito-link">
+                <Link
+                  to="/finalizar"
+                  className="carrito-link"
+                  onClick={() => setActive(false)}
+                >
                   <button className="btn-finish">Finalizar Compra</button>
                 </Link>
                 <button className="btn-clear" onClick={vaciarCarrito}>

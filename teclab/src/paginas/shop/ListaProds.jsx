@@ -29,8 +29,11 @@ export const ListaProds = ({
     : productos;
 
   const agregarAlCarrito = (product, sabores = null) => {
+    // Los productos personalizados (con sabores) siempre se agregan
+    // como línea nueva, ya que cada docena puede tener una
+    // combinación distinta de sabores/mermeladas/toppings.
     if (sabores) {
-      const itemConSabores = {
+      const itemPersonalizado = {
         ...product,
         id: `${product.id}-${Date.now()}`,
         cantidad: 1,
@@ -39,7 +42,7 @@ export const ListaProds = ({
 
       setTotal(total + product.precio);
       setCountProducts(countProducts + 1);
-      setAllProducts([...allProducts, itemConSabores]);
+      setAllProducts([...allProducts, itemPersonalizado]);
       return;
     }
 
@@ -69,14 +72,14 @@ export const ListaProds = ({
     agregarAlCarrito(product);
   };
 
-  const handleConfirmarSabores = (saboresSeleccionados) => {
-    agregarAlCarrito(productoSeleccionandoSabores, saboresSeleccionados);
+  const handleConfirmarSabores = (sabores) => {
+    agregarAlCarrito(productoSeleccionandoSabores, sabores);
     setProductoSeleccionandoSabores(null);
   };
 
   return (
     <div id="shopContent" className="container__flex">
-      <Typed />
+      <Typed categoria={categoria} />
 
       {infoCategoria && (
         <Link to="/comprar" className="volver-categorias">

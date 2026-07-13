@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Header } from "./componentes/Header.jsx";
+import { Loader } from "./componentes/Loader.jsx";
 import { Inicio } from "./paginas/inicio/Inicio.jsx";
 import { Footer } from "./componentes/Footer.jsx";
 import { ListaProds } from "./paginas/shop/ListaProds.jsx";
@@ -15,8 +16,34 @@ export const App = () => {
   const [total, setTotal] = useState(0);
   const [countProducts, setCountProducts] = useState(0);
 
+  const TIEMPO_MINIMO_MS = 1200;
+
+  const [cargando, setCargando] = useState(true);
+  const [desvaneciendo, setDesvaneciendo] = useState(false);
+
+  useEffect(() => {
+    const inicio = Date.now();
+
+    const ocultarLoader = () => {
+      const transcurrido = Date.now() - inicio;
+      const restante = Math.max(TIEMPO_MINIMO_MS - transcurrido, 0);
+
+      setTimeout(() => {
+        setDesvaneciendo(true);
+        setTimeout(() => setCargando(false), 400);
+      }, restante);
+    };
+
+    if (document.readyState === "complete") {
+      ocultarLoader();
+    } else {
+      window.addEventListener("load", ocultarLoader);
+      return () => window.removeEventListener("load", ocultarLoader);
+    }
+  }, []);
   return (
     <Router>
+      {cargando && <Loader desvaneciendo={desvaneciendo} />}
       <Header
         allProducts={allProducts}
         setAllProducts={setAllProducts}
